@@ -15,7 +15,7 @@ module.exports = function(RED) {
             if(msg.payload.length>12){
                 var buf = new Buffer(splice(msg.payload, 0, 12)).toString('utf8');
                 var json = JSON.parse(buf);
-                this.warn("this is packet " +json);
+                this.warn("this is packet " +buf);
                 var packet = lora_packet.fromWire(new Buffer(json.rxpk[0].data, 'base64'));
 
                 var NwkSKey = new Buffer(config.nsw, 'hex');
