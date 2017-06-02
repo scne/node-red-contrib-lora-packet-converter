@@ -1,14 +1,22 @@
 {
   "name": "node-red-contrib-lora-packet-converter",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "description": "node-red packet able to decrypt lora packet from gatway",
-  "author": "scne",
+  "author": {
+    "name": "Claudio Pomo",
+    "email": "claudio@nextgo.it"
+  },
+  "repository" : {
+    "type":"git",
+    "url":"https://github.com/scne/node-red-contrib-lora-packet-converter"
+  },
+  "license": "MIT",
   "dependencies": {
     "buffer-splice": "^1.0.0",
     "lora-packet": "^0.6.0"
   },
   "keywords": [
-    "node-red"
+    "node-red", "lora", "ttn"
   ],
   "node-red": {
     "nodes": {
