@@ -1,8 +1,8 @@
 {
   "name": "node-red-contrib-lora-packet-converter",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "0.0.2",
+  "description": "node-red packet able to decrypt lora packet from gatway",
+  "author": "scne",
   "dependencies": {
     "buffer-splice": "^1.0.0",
     "lora-packet": "^0.6.0"

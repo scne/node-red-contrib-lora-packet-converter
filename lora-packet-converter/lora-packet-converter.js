@@ -33,7 +33,7 @@ module.exports = function(RED) {
                     var AppSKey = new Buffer(config.asw, 'hex');
                     var decrypt = lora_packet.decrypt(packet, AppSKey, NwkSKey).toString();
                     json.rxpk[0].data = decrypt;
-                    msg.payload = json.rxpk[0].data;
+                    msg.payload = json;
                     node.status({});
                     node.send(msg);
 
