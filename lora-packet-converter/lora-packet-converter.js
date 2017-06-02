@@ -7,17 +7,6 @@ module.exports = function(RED) {
         throw "Info : not compatible";
     }
 
-    function createPacket(json, measure, cb) {
-        var result = {};
-        result.timestamp = json.rxpk[0].tmst;
-        result.frequency = json.rxpk[0].freq;
-        result.datarate = json.rxpk[0].datr;
-        result.codr = json.rxpk[0].codr;
-        result.snr = json.rxpk[0].lsnr;
-        result.rssi = json.rxpk[0].rssi;
-        cb(null, result);
-    }
-
     function loraPacketConverter(config) {
         RED.nodes.createNode(this, config);
         var node = this;
@@ -26,6 +15,7 @@ module.exports = function(RED) {
             if(msg.payload.length>12){
                 var buf = new Buffer(splice(msg.payload, 0, 12)).toString('utf8');
                 var json = JSON.parse(buf);
+                this.log(json);
                 var packet = lora_packet.fromWire(new Buffer(json.rxpk[0].data, 'base64'));
 
                 var NwkSKey = new Buffer(config.nsw, 'hex');
