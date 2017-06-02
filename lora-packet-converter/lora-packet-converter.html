@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    RED.nodes.registerType('lora-packet-converter',{
+        category: 'function',
+        color: '#FFAAAA',
+        inputs:1,
+        outputs:1,
+        label: function() {
+            return this.name||"lora-packet-converter";
+        },
+        inputLabels: 'full payload',
+        outputLabels: 'decrypted payload',
+        paletteLabel: "lora packet converter",
+        defaults: {
+            name: {value:""},
+            nsw: {value:"", required: true},
+            asw: {value:"", required: true}
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="lora-packet-converter">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-nsw"><i class="icon-tag"></i> Network Secret Key</label>
+        <input type="text" id="node-input-nsw" placeholder="Network Secret Key">
+    </div>
+    <div class="form-row">
+        <label for="node-input-asw"><i class="icon-tag"></i> Application Secret Key</label>
+        <input type="text" id="node-input-asw" placeholder="Application Secret Key">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Lora Packet Converter">
+    <p>Description</p>
+</script>
