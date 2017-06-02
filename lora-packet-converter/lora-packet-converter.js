@@ -12,10 +12,9 @@ module.exports = function(RED) {
         var node = this;
 
         node.on('input', function(msg) {
-            if(msg.payload.length>12){
-                var buf = new Buffer(splice(msg.payload, 0, 12)).toString('utf8');
-                var json = JSON.parse(buf);
-                this.warn("this is packet " +buf);
+            var buf = new Buffer(splice(msg.payload, 0, 12)).toString('utf8');
+            var json = JSON.parse(buf);
+            if(json.rxpk !== undefined){
                 var packet = lora_packet.fromWire(new Buffer(json.rxpk[0].data, 'base64'));
 
                 var NwkSKey = new Buffer(config.nsw, 'hex');
@@ -27,10 +26,12 @@ module.exports = function(RED) {
                     node.status({});
                     node.send(msg);
 
-                }else {
+                } else {
                     node.error("hit an error", "fail Network key for "+msg);
-                    return;
+                    node.send(null);
                 }
+            } else {
+                node.send(null);
             }
 
         });
